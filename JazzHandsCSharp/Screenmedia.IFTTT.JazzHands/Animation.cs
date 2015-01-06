@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.Collections.Generic;
 
 namespace Screenmedia.IFTTT.JazzHands
@@ -12,7 +12,7 @@ namespace Screenmedia.IFTTT.JazzHands
 		protected List<AnimationKeyFrame> KeyFrames;
 
 		private List<AnimationFrame> _timeline; // AnimationFrames
-		private int _startTime; // in case timeline starts before t=0
+		private nint _startTime; // in case timeline starts before t=0
 
 //		public Animation ()
 //		{
@@ -60,14 +60,14 @@ namespace Screenmedia.IFTTT.JazzHands
 				AnimationKeyFrame currentKeyFrame = KeyFrames[i];
 				AnimationKeyFrame nextKeyFrame = KeyFrames[i+1];
 
-				for (int j = currentKeyFrame.Time + (i == 0 ? 0 : 1); j <= nextKeyFrame.Time; j++) {
+				for (nint j = currentKeyFrame.Time + (i == 0 ? 0 : 1); j <= nextKeyFrame.Time; j++) {
 					_timeline.Add (FrameForTime (j, currentKeyFrame, nextKeyFrame));
 				}
 			}
 			_startTime = ((AnimationKeyFrame)KeyFrames [0]).Time;
 		}
 
-		public virtual AnimationFrame FrameForTime (int time,
+		public virtual AnimationFrame FrameForTime (nint time,
 			AnimationKeyFrame startKeyFrame,
 			AnimationKeyFrame endKeyFrame)
 		{
@@ -75,33 +75,36 @@ namespace Screenmedia.IFTTT.JazzHands
 			return startKeyFrame;
 		}
 
-        public AnimationFrame AnimationFrameForTime(int time)
+        public AnimationFrame AnimationFrameForTime(nint time)
         {
 			if (time < _startTime) {
 				return _timeline[0];
 			}
 
 			if (time - _startTime < _timeline.Count()) {
-				return _timeline[time - _startTime];
+				// http://stackoverflow.com/questions/7919833/can-i-construct-a-long-listint-such-that-the-index-is-long
+				// this has to be a 32bit int used for the index
+				return _timeline[Convert.ToInt32(time - _startTime)];
 			}
 
 			return _timeline.Last();
 		}
 
-		public virtual void Animate(int time)
+		public virtual void Animate(nint time)
 		{
 			Console.WriteLine(@"Hey pal! You need to use a subclass of IFTTTAnimation.");
 		}
 
-		protected Single TweenValueForStartTime(int startTime,
-				int endTime,
-				Single startValue,
-				Single endValue,
-				Single time){
-			Single dt = (endTime - startTime);
-			Single timePassed = (time - startTime);
-			Single dv = (endValue - startValue);
-			Single vv = dv / dt;
+		protected nfloat TweenValueForStartTime(nint startTime,
+				nint endTime,
+				nfloat startValue,
+				nfloat endValue,
+				nfloat time)
+				{
+				nfloat dt = (endTime - startTime);
+				nfloat timePassed = (time - startTime);
+				nfloat dv = (endValue - startValue);
+				nfloat vv = dv / dt;
 			return (timePassed * vv) + startValue;
 		}
 	}

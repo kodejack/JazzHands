@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 
 namespace Screenmedia.IFTTT.JazzHands
 {
 	public class AnimationKeyFrame : AnimationFrame
 	{
-		public int Time { get; set; }
+		public nint Time { get; set; }
 
-		public AnimationKeyFrame ()//AnimationType type, int time, T2 value2)
+		public AnimationKeyFrame ()//AnimationType type, nint time, T2 value2)
 		{
 //			Time = time;
 //			switch (type) {
@@ -41,12 +41,12 @@ namespace Screenmedia.IFTTT.JazzHands
 
 
 //         These methods dont seem to do anything, in .net we can do all this stuff by sending in the values a construction.
-//		public List<AnimationKeyFrame> KeyFramesWithTimesAndAlphas(params Tuple<int, Single>[] pairCount)
+//		public List<AnimationKeyFrame> KeyFramesWithTimesAndAlphas(params Tuple<nint, nfloat>[] pairCount)
 //		{
 //            if (pairCount.Length > 0)
 //            {
 //                var keyFrames = new List<AnimationKeyFrame>();
-//                for (int i = 0; i < pairCount.Length; i++)
+//                for (nint i = 0; i < pairCount.Length; i++)
 //                {
 //                    var keyFrame = new AnimationKeyFrame()
 //                    {
@@ -68,7 +68,7 @@ namespace Screenmedia.IFTTT.JazzHands
 //	        {
 //	            var keyFrames = new List<AnimationKeyFrame>();
 //
-//	            for (int i = 0; i < pairCount.Length; i++)
+//	            for (nint i = 0; i < pairCount.Length; i++)
 //	            {
 //	                time = pairCount[i].Item1;
 //	                item2 = pairCount[i].Item2; // use double to suppress a va_arg conversion warning
@@ -84,18 +84,18 @@ namespace Screenmedia.IFTTT.JazzHands
 //	        }
 //	    }
 
-//        public List<AnimationKeyFrame> KeyFramesWithTimesAndFrames(AnimationType animationType, params Tuple<int, RectangleF>[] pairCount)
+//        public List<AnimationKeyFrame> KeyFramesWithTimesAndFrames(AnimationType animationType, params Tuple<nint, RectangleF>[] pairCount)
 //		{
 ////            return KeyFramesGeneric(animationType, pairCount);
 ////			va_list argumentList;
-////			int time;
+////			nint time;
 ////			RectangleF frame;
 ////			if (pairCount > 0) {
 ////				NSMutableArray *keyFrames = [NSMutableArray arrayWithCapacity:(NSUInteger)pairCount];
 ////
 ////				va_start(argumentList, pairCount);
 ////
-////				for (int i=0; i<pairCount; i++) {
+////				for (nint i=0; i<pairCount; i++) {
 ////					time = va_arg(argumentList, NSInteger);
 ////					frame = va_arg(argumentList, CGRect);
 ////					IFTTTAnimationKeyFrame *keyFrame = [IFTTTAnimationKeyFrame keyFrameWithTime:time
@@ -112,7 +112,7 @@ namespace Screenmedia.IFTTT.JazzHands
 ////			}
 //		}
 ////
-//        public List<AnimationKeyFrame> KeyFramesWithTimesAndHiddens(AnimationType animationType, params Tuple<int, bool>[] pairCount)
+//        public List<AnimationKeyFrame> KeyFramesWithTimesAndHiddens(AnimationType animationType, params Tuple<nint, bool>[] pairCount)
 //		{
 ////            return KeyFramesGeneric(animationType, pairCount);
 ////			va_list argumentList;
@@ -123,9 +123,9 @@ namespace Screenmedia.IFTTT.JazzHands
 ////
 ////				va_start(argumentList, pairCount);
 ////
-////				for (int i=0; i<pairCount; i++) {
+////				for (nint i=0; i<pairCount; i++) {
 ////					time = va_arg(argumentList, NSInteger);
-////					hidden = (BOOL)va_arg(argumentList, int); // use int to suppress a va_arg conversion warning
+////					hidden = (BOOL)va_arg(argumentList, nint); // use nint to suppress a va_arg conversion warning
 ////					IFTTTAnimationKeyFrame *keyFrame = [IFTTTAnimationKeyFrame keyFrameWithTime:time
 ////						andHidden:hidden];
 ////					[keyFrames addObject:keyFrame];
@@ -140,7 +140,7 @@ namespace Screenmedia.IFTTT.JazzHands
 ////			}
 //		}
 //
-//        public List<AnimationKeyFrame> KeyFramesWithTimesAndColors(AnimationType animationType, params Tuple<int, UIColor>[] pairCount)
+//        public List<AnimationKeyFrame> KeyFramesWithTimesAndColors(AnimationType animationType, params Tuple<nint, UIColor>[] pairCount)
 //		{
 ////            return KeyFramesGeneric(animationType, pairCount);
 ////			va_list argumentList;
@@ -151,7 +151,7 @@ namespace Screenmedia.IFTTT.JazzHands
 ////
 ////				va_start(argumentList, pairCount);
 ////
-////				for (int i=0; i<pairCount; i++) {
+////				for (nint i=0; i<pairCount; i++) {
 ////					time = va_arg(argumentList, NSInteger);
 ////					color = va_arg(argumentList, id);
 ////					IFTTTAnimationKeyFrame *keyFrame = [IFTTTAnimationKeyFrame keyFrameWithTime:time
@@ -168,7 +168,7 @@ namespace Screenmedia.IFTTT.JazzHands
 ////			}
 //		}
 //
-//        public List<AnimationKeyFrame> KeyFramesWithTimesAndAngles(AnimationType animationType, params Tuple<int, Single>[] pairCount)
+//        public List<AnimationKeyFrame> KeyFramesWithTimesAndAngles(AnimationType animationType, params Tuple<nint, nfloat>[] pairCount)
 //	    {
 ////            return KeyFramesGeneric(animationType, pairCount);
 ////			va_list argumentList;
@@ -179,7 +179,7 @@ namespace Screenmedia.IFTTT.JazzHands
 ////
 ////				va_start(argumentList, pairCount);
 ////
-////				for (int i=0; i<pairCount; i++) {
+////				for (nint i=0; i<pairCount; i++) {
 ////					time = va_arg(argumentList, NSInteger);
 ////					angle = (CGFloat)va_arg(argumentList, double);
 ////					IFTTTAnimationKeyFrame *keyFrame = [IFTTTAnimationKeyFrame keyFrameWithTime:time
@@ -196,7 +196,7 @@ namespace Screenmedia.IFTTT.JazzHands
 ////			}
 //		}
 //
-//        public List<AnimationKeyFrame> KeyFramesWithTimesAndTransform3D(AnimationType animationType, params Tuple<int, object>[] pairCount)
+//        public List<AnimationKeyFrame> KeyFramesWithTimesAndTransform3D(AnimationType animationType, params Tuple<nint, object>[] pairCount)
 //        {
 ////            return KeyFramesGeneric(animationType, pairCount);
 ////			va_list argumentList;
@@ -207,7 +207,7 @@ namespace Screenmedia.IFTTT.JazzHands
 ////
 ////				va_start(argumentList, pairCount);
 ////
-////				for (int i=0; i<pairCount; i++) {
+////				for (nint i=0; i<pairCount; i++) {
 ////					time = va_arg(argumentList, NSInteger);
 ////					transform = va_arg(argumentList, id);
 ////					IFTTTAnimationKeyFrame *keyFrame = [IFTTTAnimationKeyFrame keyFrameWithTime:time
@@ -223,7 +223,7 @@ namespace Screenmedia.IFTTT.JazzHands
 ////			}
 //		}
 //
-//        public List<AnimationKeyFrame> KeyFramesWithTimesAndScales(AnimationType animationType, params Tuple<int, Single>[] pairCount)
+//        public List<AnimationKeyFrame> KeyFramesWithTimesAndScales(AnimationType animationType, params Tuple<nint, nfloat>[] pairCount)
 //        {
 ////            return KeyFramesGeneric(animationType, pairCount);
 ////			va_list argumentList;
@@ -234,7 +234,7 @@ namespace Screenmedia.IFTTT.JazzHands
 ////
 ////				va_start(argumentList, pairCount);
 ////
-////				for (int i=0; i<pairCount; i++) {
+////				for (nint i=0; i<pairCount; i++) {
 ////					time = va_arg(argumentList, NSInteger);
 ////					scale = (CGFloat)va_arg(argumentList, double);
 ////					IFTTTAnimationKeyFrame *keyFrame = [IFTTTAnimationKeyFrame keyFrameWithTime: time

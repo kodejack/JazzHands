@@ -1,11 +1,11 @@
-﻿using System;
-using MonoTouch.Foundation;
+using System;
+using Foundation;
 
 namespace Screenmedia.IFTTT.JazzHands
 {
     public class Transform3D : NSObject
     {
-        public float M34;
+        public nfloat M34;
         public Transform3DScale Scale;
         public Transform3DRotate Rotate;
         public Transform3DTranslate Translate;
@@ -37,18 +37,18 @@ namespace Screenmedia.IFTTT.JazzHands
 
     public class Transform3DTranslate
     {
-        public float Tx, Ty, Tz = 0.0f;
+        public nfloat Tx, Ty, Tz = 0.0f;
     }
 
     public class Transform3DRotate
     {
-        public float Angle = 0.0f;
-        public float X, Y, Z = 0.0f;
+        public nfloat Angle = 0.0f;
+        public nfloat X, Y, Z = 0.0f;
     }
 
     public class Transform3DScale
     {
-        public float Sx, Sy, Sz = 0.0f;
+        public nfloat Sx, Sy, Sz = 0.0f;
 
     }
 }

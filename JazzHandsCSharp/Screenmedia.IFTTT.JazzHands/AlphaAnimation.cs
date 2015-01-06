@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using System.Linq;
-using MonoTouch.UIKit;
+using UIKit;
 
 namespace Screenmedia.IFTTT.JazzHands
 {
@@ -10,7 +10,7 @@ namespace Screenmedia.IFTTT.JazzHands
 	    {
 	    }
 
-	    public override void Animate(int time)
+	    public override void Animate(nint time)
 		{
 			if (KeyFrames.Count() <= 1) return;
 
@@ -18,7 +18,7 @@ namespace Screenmedia.IFTTT.JazzHands
 			View.Alpha = animationFrame.Alpha;
 		}
 
-		public override AnimationFrame FrameForTime(int time,
+		public override AnimationFrame FrameForTime(nint time,
 			AnimationKeyFrame startKeyFrame,
 			AnimationKeyFrame endKeyFrame)
 		{

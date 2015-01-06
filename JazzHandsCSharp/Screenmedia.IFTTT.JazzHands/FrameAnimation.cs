@@ -1,9 +1,9 @@
-﻿using System;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using System;
+using CoreGraphics;
+using Foundation;
+using UIKit;
 using System.Linq;
-using MonoTouch.CoreGraphics;
+using CoreGraphics;
 
 namespace Screenmedia.IFTTT.JazzHands
 {
@@ -13,12 +13,12 @@ namespace Screenmedia.IFTTT.JazzHands
         {
         }
 
-		public override void Animate(int time)
+		public override void Animate(nint time)
         {
             if (KeyFrames.Count() <= 1)
                 return;
 
-            AnimationFrame animationFrame = AnimationFrameForTime(time);
+			  AnimationFrame animationFrame = AnimationFrameForTime(time);
 
             // Store the current transform
             CGAffineTransform tempTransform = View.Transform;
@@ -31,23 +31,22 @@ namespace Screenmedia.IFTTT.JazzHands
             View.Transform = tempTransform;
         }
 
-		public override AnimationFrame FrameForTime(int time,
+		public override AnimationFrame FrameForTime(nint time,
             AnimationKeyFrame startKeyFrame,
             AnimationKeyFrame endKeyFrame)
         {
-            int startTime = startKeyFrame.Time;
-            int endTime = endKeyFrame.Time;
-            RectangleF startLocation = startKeyFrame.Frame;
-            RectangleF endLocation = endKeyFrame.Frame;
+            nint startTime = startKeyFrame.Time;
+            nint endTime = endKeyFrame.Time;
+            CGRect startLocation = startKeyFrame.Frame;
+            CGRect endLocation = endKeyFrame.Frame;
 
-            RectangleF frame = View.Frame;
+            CGRect frame = View.Frame;
             frame.Location =
-                new PointF(
+                new CGPoint(
                     TweenValueForStartTime(startTime, endTime, startLocation.GetMinX(), endLocation.GetMinX(), time),
                     TweenValueForStartTime(startTime, endTime, startLocation.GetMinY(), endLocation.GetMinY(), time));
             frame.Size =
-                new SizeF(TweenValueForStartTime(startTime, endTime, startLocation.Width, endLocation.Width, time),
-                    TweenValueForStartTime(startTime, endTime, startLocation.Height, endLocation.Height, time));
+                new CGSize(TweenValueForStartTime(startTime, endTime, startLocation.Width, endLocation.Width, time), TweenValueForStartTime(startTime, endTime, startLocation.Height, endLocation.Height, time));
 
             AnimationFrame animationFrame = new AnimationFrame();
             animationFrame.Frame = frame;

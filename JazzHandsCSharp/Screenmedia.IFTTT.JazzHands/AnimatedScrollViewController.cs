@@ -1,7 +1,7 @@
-﻿using System;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
-using MonoTouch.ObjCRuntime;
+using System;
+using UIKit;
+using Foundation;
+using ObjCRuntime;
 
 namespace Screenmedia.IFTTT.JazzHands
 {
@@ -25,7 +25,7 @@ namespace Screenmedia.IFTTT.JazzHands
 
 		private bool _isAtEnd;
 
-		static Single MaxContentOffsetXForScrollView(UIScrollView scrollView)
+		static nfloat MaxContentOffsetXForScrollView(UIScrollView scrollView)
 		{
 			return scrollView.ContentSize.Width + scrollView.ContentInset.Right - scrollView.Bounds.Width;
 		}

@@ -1,10 +1,10 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using CoreGraphics;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using Screenmedia.IFTTT.JazzHands;
 
 
@@ -35,7 +35,7 @@ namespace Screenmedia.IFTTT.JazzHandsDemo
 		{
 			base.ViewDidLoad ();
 
-			ScrollView.ContentSize = new SizeF (NumberOfPages * View.Frame.Width, View.Frame.Height);
+			ScrollView.ContentSize = new CGSize (NumberOfPages * View.Frame.Width, View.Frame.Height);
 
 			ScrollView.PagingEnabled = true;
 			ScrollView.ShowsHorizontalScrollIndicator = false;
@@ -52,7 +52,7 @@ namespace Screenmedia.IFTTT.JazzHandsDemo
 			Unicorn.Center = View.Center;
 			Unicorn.Alpha = 0.0f;
 			var rect = Unicorn.Frame;
-			rect.Offset (new PointF ( View.Frame.Width, -100));
+			rect.Offset (new CGPoint ( View.Frame.Width, -100));
 			Unicorn.Frame = rect;
 			ScrollView.AddSubview(Unicorn);
 
@@ -61,7 +61,7 @@ namespace Screenmedia.IFTTT.JazzHandsDemo
             Wordmark = new UIImageView(UIImage.FromBundle("IFTTT"));
 			Wordmark.Center = View.Center;
 			var rect2 = Wordmark.Frame;
-			rect2.Offset (new PointF ( View.Frame.Width, -100));
+			rect2.Offset (new CGPoint ( View.Frame.Width, -100));
 			Wordmark.Frame = rect2;
 			ScrollView.AddSubview(Wordmark);
 
@@ -111,7 +111,7 @@ namespace Screenmedia.IFTTT.JazzHandsDemo
 			if (IsOffset) 
 			{
 				var rect = l.Frame;
-				rect.Offset (new PointF (TimeForPage (page), y));
+				rect.Offset (new CGPoint (TimeForPage (page), y));
 				l.Frame = rect;
 			}
 			return l;
@@ -127,7 +127,7 @@ namespace Screenmedia.IFTTT.JazzHandsDemo
 			if (IsOffset) 
 			{
 				var rect = l.Frame;
-				rect.Offset (new PointF (TimeForPage (page), y));
+				rect.Offset (new CGPoint (TimeForPage (page), y));
 				l.Frame = rect;
 			}
 			return l;
@@ -172,7 +172,7 @@ namespace Screenmedia.IFTTT.JazzHandsDemo
 			var newAnimaitons = new List<AnimationKeyFrame> ();
 
 			var temp1 = Wordmark.Frame;
-			temp1.Offset (new PointF (200, 0));
+			temp1.Offset (new CGPoint (200, 0));
 
 			newAnimaitons.Add (new AnimationKeyFrame () {
 				Time = TimeForPage (1),
@@ -183,7 +183,7 @@ namespace Screenmedia.IFTTT.JazzHandsDemo
 
 
 			var temp2 = Wordmark.Frame;
-			temp2.Offset (new PointF (View.Frame.Width, dy));
+			temp2.Offset (new CGPoint (View.Frame.Width, dy));
 
 			newAnimaitons.Add (new AnimationKeyFrame () {
 				Time = TimeForPage (3),
@@ -191,7 +191,7 @@ namespace Screenmedia.IFTTT.JazzHandsDemo
 			});
 
 			var temp3 = Wordmark.Frame;
-			temp3.Offset (new PointF (0, dy));
+			temp3.Offset (new CGPoint (0, dy));
 
 			newAnimaitons.Add (new AnimationKeyFrame () {
 				Time = TimeForPage (4),
@@ -230,7 +230,7 @@ namespace Screenmedia.IFTTT.JazzHandsDemo
 				Frame = Unicorn.Frame
 			});
 
-			Unicorn.Frame = RectangleF.Inflate (Unicorn.Frame, -ds, -ds);
+			Unicorn.Frame = CGRect.Inflate (Unicorn.Frame, -ds, -ds);
 			var uTemp1 = Unicorn.Frame;
 			uTemp1.Offset (TimeForPage (2), dy);
 			Unicorn.Frame = uTemp1;

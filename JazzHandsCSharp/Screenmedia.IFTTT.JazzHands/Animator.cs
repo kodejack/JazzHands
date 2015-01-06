@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Screenmedia.IFTTT.JazzHands
@@ -12,7 +12,7 @@ namespace Screenmedia.IFTTT.JazzHands
 			_animations = new List<Animation> ();
 		}
 
-		public void Animate(int time){
+		public void Animate(nint time){
 			foreach (var animation in _animations) {
 				animation.Animate(time);
 			}

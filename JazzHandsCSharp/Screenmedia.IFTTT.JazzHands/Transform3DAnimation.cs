@@ -1,23 +1,22 @@
-﻿using System;
+using System;
 using System.Linq;
-using System.Drawing;
-using MonoTouch.CoreAnimation;
-using MonoTouch.CoreGraphics;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
+using CoreGraphics;
+using CoreAnimation;
+using CoreGraphics;
+using UIKit;
+using Foundation;
 
 namespace Screenmedia.IFTTT.JazzHands
 {
 	public class Transform3DAnimation : Animation
 	{
 	    private readonly float _m34;
+		public Transform3DAnimation(UIView view, float m34) : base(view)
+		{
+			_m34 = m34;
+		}
 
-	    public Transform3DAnimation(UIView view, float m34) : base(view)
-	    {
-	        _m34 = m34;
-	    }
-
-	    public override void Animate(int time)
+	    public override void Animate(nint time)
 		{
 			if (KeyFrames.Count () <= 1)
 				return;
@@ -65,7 +64,7 @@ namespace Screenmedia.IFTTT.JazzHands
 		}
 
 
-	    public override AnimationFrame FrameForTime(int time,
+	    public override AnimationFrame FrameForTime(nint time,
             AnimationKeyFrame startKeyFrame,
             AnimationKeyFrame endKeyFrame)
         {

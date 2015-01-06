@@ -1,7 +1,7 @@
-﻿using System;
-using MonoTouch.UIKit;
+using System;
+using UIKit;
 using System.Linq;
-using MonoTouch.CoreGraphics;
+using CoreGraphics;
 
 namespace Screenmedia.IFTTT.JazzHands
 {
@@ -10,7 +10,7 @@ namespace Screenmedia.IFTTT.JazzHands
 		public AngleAnimation (UIView view) : base(view)
 		{
 		}
-		public override void Animate(int time)
+		public override void Animate(nint time)
 		{
 			if (KeyFrames.Count() <= 1) return;
 
@@ -18,7 +18,7 @@ namespace Screenmedia.IFTTT.JazzHands
 			View.Transform = CGAffineTransform.MakeRotation(animationFrame.Angle);
 		}
 
-		public override AnimationFrame FrameForTime(int time,
+		public override AnimationFrame FrameForTime(nint time,
 			AnimationKeyFrame startKeyFrame,
 			AnimationKeyFrame endKeyFrame)
 		{
